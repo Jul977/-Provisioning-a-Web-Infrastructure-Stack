@@ -1,8 +1,8 @@
-#Provisioning a Web Infrastructure Stack
+# Provisioning a Web Infrastructure Stack
 
 This project is a Terraform configuration for deploying a resilient and scalable Architecture in Azure.
 
-Prerequisites
+## Prerequisites
 Before you can use this project, you will need to have the following installed:
 
 Azure Account - If you don't have one, you can sign up for a free trial on the Azure website
@@ -15,7 +15,7 @@ Azure CLI
 
 Azure Service Principal (Recommended) - Follow the instructions on Microsoft Learn to create a Service Principal and authenticate Terraform to use it
 
-Implementation Steps
+## Implementation Steps
 
 The first step to configuring Terraform Backend to store the state management file (backend.tf) in Azure Storage is to create an Azure Storage Account and a container.
 
@@ -28,9 +28,9 @@ Proceed to define the terraform provider which is azurerm in the providers.tf fi
 Creating the Project Directory
 Begin by creating a dedicated directory for your Terraform project. This directory will serve as the root of your project and will house all the necessary files and subdirectories.
 
-Here's a quick rundown of these files:
+## Here's a quick rundown of these files:
 
-Main folder
+### Main folder
 main.tf: This file aggregates the modules you've defined and sets up any additional resources that span across multiple modules, such as global networking components.
 
 variables.tf: Similar to the module-level variables, root-level variables allow you to customize the overall configuration of your project.
@@ -42,7 +42,7 @@ providers.tf: Specify the providers you're using, along with any provider-specif
 backend.tf: The backend.tf file is crucial when configuring remote state management. It establishes the backend settings, such as where and how the Terraform state should be stored remotely, often in cloud storage like Azure Storage which we already had set up previously.
 
 
-Dividing Your Infrastructure into Modules
+## Dividing Your Infrastructure into Modules
 
 Modules allow you to simplify specific configurations and logically separate different components of your architecture.
 
