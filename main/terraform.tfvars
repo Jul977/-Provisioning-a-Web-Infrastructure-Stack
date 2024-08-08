@@ -1,0 +1,8 @@
+resource_group_name = "Julrg"
+location = "East US"
+vnet_address_space = "10.0.0.0/16"
+snet1_address_space = "10.0.1.0/24"
+snet2_address_spacee = "10.0.2.0/24"
+snet3_address_space = "10.0.3.0/24"
+kv_name = "Jul_kv"
+app_gateway_name = "web_appgw"
