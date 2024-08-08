@@ -25,7 +25,8 @@ Once you've successfully created the storage account and container, the next ste
 
 Proceed to define the terraform provider which is azurerm in the providers.tf file
 
-Creating the Project Directory
+##### Creating the Project Directory
+
 Begin by creating a dedicated directory for your Terraform project. This directory will serve as the root of your project and will house all the necessary files and subdirectories.
 
 ## Here's a quick rundown of these files:
@@ -67,3 +68,15 @@ terraform plan
 ✨Finally, HIT the below command to deploy the application...
 
 terraform apply -auto-approve
+
+### Resource created
+Resource group
+Virtual network
+Network security group
+Virtual machine
+Load balancer
+Application gateway
+key vault
+
+
+
