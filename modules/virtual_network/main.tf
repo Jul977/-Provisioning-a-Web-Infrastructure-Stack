@@ -1,7 +1,7 @@
 #Creating our virtual network
 resource "azurerm_virtual_network" "net1" {
-  name     = "Hub-vnet"
-  location = var.location
+  name                = "Hub-vnet"
+  location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = [var.vnet_address_space]
 

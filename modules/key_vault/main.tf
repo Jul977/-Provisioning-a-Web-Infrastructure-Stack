@@ -12,7 +12,7 @@ resource "azurerm_key_vault" "vault" {
 # Define a Key Vault secret for SQL Database credentials
 resource "azurerm_key_vault_secret" "db_password" {
   name         = "sql-db-password"
-  value        = "P@ssw0rd1234!"  # Change to a secure password
+  value        = "P@ssw0rd1234!" # Change to a secure password
   key_vault_id = azurerm_key_vault.vault.id
 }
 
@@ -20,7 +20,7 @@ resource "azurerm_key_vault_secret" "db_password" {
 resource "azurerm_key_vault_access_policy" "sql_server_access" {
   key_vault_id = azurerm_key_vault.vault.id
   #tenant_id    = data.azurerm_client_config.Jul1.tenant_id
-  object_id     = azurerm_mssql_server.server.identity[0].principal_id
+  object_id = azurerm_mssql_server.server.identity[0].principal_id
 
   secret_permissions = [
     "get",

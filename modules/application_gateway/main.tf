@@ -1,10 +1,10 @@
 #Creating the public IP for the application gateway
 resource "azurerm_public_ip" "app_gateway_public_ip" {
-  name = "${var.app_gateway_name}-publicip"
+  name                = "${var.app_gateway_name}-publicip"
   resource_group_name = var.resource_group_name
-  location = var.location
-  allocation_method = "Static"
-  sku = "Standard"
+  location            = var.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
 }
 
 # Defines local variables for re-used values
@@ -46,17 +46,17 @@ resource "azurerm_application_gateway" "network" {
   }
 
   backend_address_pool {
-    name  = local.backend_address_pool_name
-     
+    name = local.backend_address_pool_name
+
   }
 
   backend_http_settings {
-    name                                = local.http_setting_name
-    cookie_based_affinity               = "Disabled"
-    path                                = "/"
-    port                                = 80
-    protocol                            = "Http"
-    request_timeout                     = 30
+    name                  = local.http_setting_name
+    cookie_based_affinity = "Disabled"
+    path                  = "/"
+    port                  = 80
+    protocol              = "Http"
+    request_timeout       = 30
   }
 
   http_listener {
@@ -73,7 +73,7 @@ resource "azurerm_application_gateway" "network" {
     backend_address_pool_name  = local.backend_address_pool_name
     backend_http_settings_name = local.http_setting_name
   }
-  
+
   depends_on = [
     azurerm_public_ip.app_gateway_public_ip.id
   ]

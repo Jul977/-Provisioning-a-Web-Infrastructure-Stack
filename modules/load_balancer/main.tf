@@ -16,11 +16,11 @@ resource "azurerm_lb" "lb" {
 
 
   frontend_ip_configuration {
-    name                          = "PublicLb"
-    public_ip_address_id            = "azurerm_public_ip.pip.id"
+    name                 = "PublicLb"
+    public_ip_address_id = "azurerm_public_ip.pip.id"
+  }
 
-  
-}}
+}
 
 #Creating the backend pool
 resource "azurerm_lb_backend_address_pool" "pool1" {

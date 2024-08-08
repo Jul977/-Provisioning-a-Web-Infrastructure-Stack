@@ -26,42 +26,42 @@ resource "azurerm_windows_virtual_machine_scale_set" "vmss1" {
     primary = true
 
     ip_configuration {
-      name      = "internal"
-      primary   = true
-      subnet_id = var.subnet_id
-      load_balancer_backend_address_pool_ids = var.lb_backend_pool_ids
+      name                                         = "internal"
+      primary                                      = true
+      subnet_id                                    = var.subnet_id
+      load_balancer_backend_address_pool_ids       = var.lb_backend_pool_ids
       application_gateway_backend_address_pool_ids = var.ag_backend_pool_ids
 
     }
 
-     # Scaling settings
-  autoscale_profile {
-    name = "vmss-autoscale-profile"
+    # Scaling settings
+    autoscale_profile {
+      name = "vmss-autoscale-profile"
 
-    rule {
-      name    = "vmss-scale-out"
-      metric  = "Percentage CPU"
-      operator = "GreaterThan"
-      threshold = 60
-      direction = "Increase"
-      change_count = 1
-      cooldown = "PT5M"
+      rule {
+        name         = "vmss-scale-out"
+        metric       = "Percentage CPU"
+        operator     = "GreaterThan"
+        threshold    = 60
+        direction    = "Increase"
+        change_count = 1
+        cooldown     = "PT5M"
+      }
+
+      rule {
+        name         = "vmss-scale-in"
+        metric       = "Percentage CPU"
+        operator     = "LessThan"
+        threshold    = 25
+        direction    = "Decrease"
+        change_count = 1
+        cooldown     = "PT5M"
+      }
     }
 
-    rule {
-      name    = "vmss-scale-in"
-      metric  = "Percentage CPU"
-      operator = "LessThan"
-      threshold = 25
-      direction = "Decrease"
-      change_count = 1
-      cooldown = "PT5M"
-    }
-  }
-
-  # Scaling configuration
-  min_instances = 2
-  max_instances = 5
+    # Scaling configuration
+    min_instances = 2
+    max_instances = 5
   }
 }
 
@@ -70,8 +70,8 @@ resource "azurerm_windows_virtual_machine_scale_set" "vmss1" {
 #Creating network interface for our VMs
 resource "azurerm_network_interface" "nic1" {
   name                = vm_nic
-  resource_group_name  = var.vnet_name
-  location             = var.location
+  resource_group_name = var.vnet_name
+  location            = var.location
 
   ip_configuration {
     name                          = "ipconfig"
@@ -82,8 +82,8 @@ resource "azurerm_network_interface" "nic1" {
 #Creating the VM (Windows server)
 resource "azurerm_windows_virtual_machine" "vm" {
   name                  = "Database_Vm"
-  resource_group_name  = var.vnet_name
-  location             = var.location
+  resource_group_name   = var.vnet_name
+  location              = var.location
   size                  = "Standard_D4s_v3"
   admin_username        = "adminuser"
   admin_password        = "Pa$$.word97"

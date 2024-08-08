@@ -7,9 +7,9 @@ resource "azurerm_mssql_server" "server" {
   administrator_login          = "sqladmin"
   administrator_login_password = azurerm_key_vault_secret.db_password.value
 
-   identity {
+  identity {
     type = "SystemAssigned"
-}
+  }
 }
 
 
@@ -37,7 +37,7 @@ resource "azurerm_mssql_server_firewall_rule" "allow_azure_services" {
   resource_group_name = var.resource_group_name
   server_name         = azurerm_mssql_server.example.name
   start_ip_address    = "0.0.0.0"
-  end_ip_address      = "0.0.0.0"  # This allows access from Azure services
+  end_ip_address      = "0.0.0.0" # This allows access from Azure services
 }
 
 # Data source to get client config for tenant ID
