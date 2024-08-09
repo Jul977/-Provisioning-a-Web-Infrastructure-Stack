@@ -55,11 +55,11 @@ Now we are ready to deploy our infrastructure on the cloud
 
 Get into the project directory
 
-Proceed to use az login to authenticate into our azure environment ussing the details of the service principal earlier created
+Proceed to use az login to authenticate into our azure environment using the details of the service principal earlier created
 
 cd main
 
-👉 Let install dependency to deploy the application
+👉 Let install dependency to deploy the infrastructure 
 terraform init
 
 Type the below command to see the plan of the execution
@@ -70,12 +70,12 @@ terraform plan
 terraform apply -auto-approve
 
 ### Resource created
-Resource group
-Virtual network
-Network security group
-Virtual machine
-Load balancer
-Application gateway
+Resource group,
+Virtual network,
+Network security group,
+Virtual machine,
+Load balancer,
+Application gateway,
 key vault
 
 
